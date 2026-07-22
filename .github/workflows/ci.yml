@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - run: npm ci
+
+      - run: npm run typecheck
+
+      - run: npm run build
+
+      - name: Smoke test the built output
+        run: |
+          node --input-type=module -e "
+            const m = await import('./dist/index.js');
+            const need = ['Melodreams', 'MelodreamsError', 'MelodreamsRateLimitError'];
+            const missing = need.filter(k => typeof m[k] !== 'function');
+            if (missing.length) { console.error('missing exports:', missing.join(', ')); process.exit(1); }
+            const c = new m.Melodreams({ token: 'mdr_live_' + 'A'.repeat(22) + '_' + 'B'.repeat(43) });
+            if (typeof c.profile !== 'function') { console.error('client is missing methods'); process.exit(1); }
+            let threw = false;
+            try { new m.Melodreams({ token: 'nope' }); } catch { threw = true; }
+            if (!threw) { console.error('malformed token was accepted'); process.exit(1); }
+            console.log('exports and token guard OK on node ' + process.version);
+          "
