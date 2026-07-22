@@ -1,5 +1,5 @@
 {
-  "name": "@melodreams/sdk",
+  "name": "@heymelodreams/sdk",
   "version": "0.1.0",
   "description": "Official TypeScript/JavaScript client for the Melodreams Developer API",
   "license": "MIT",
@@ -12,14 +12,39 @@
       "import": "./dist/index.js"
     }
   },
-  "files": ["dist", "README.md", "LICENSE"],
-  "engines": { "node": ">=18" },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build"
   },
-  "keywords": ["melodreams", "api", "sdk", "link-in-bio"],
+  "keywords": [
+    "melodreams",
+    "api",
+    "sdk",
+    "link-in-bio"
+  ],
   "dependencies": {},
-  "devDependencies": { "typescript": "^5.6.0" }
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ricknotmereal2077/sdk-melodreams-js.git"
+  },
+  "homepage": "https://developer.melodreams.com/docs",
+  "bugs": {
+    "url": "https://github.com/ricknotmereal2077/sdk-melodreams-js/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
 }

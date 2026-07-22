@@ -1,11 +1,11 @@
-# @melodreams/sdk
+# @heymelodreams/sdk
 
 Official TypeScript/JavaScript client for the [Melodreams Developer API](https://developer.melodreams.com/docs).
 
 Zero dependencies. Node 18+ (or any runtime with global `fetch` — Bun, Deno, Cloudflare Workers).
 
 ```bash
-npm install @melodreams/sdk
+npm install @heymelodreams/sdk
 ```
 
 ## Server-side only
@@ -19,7 +19,7 @@ Call it from your server and expose only what your front end needs.
 ## Quick start
 
 ```ts
-import { Melodreams } from '@melodreams/sdk';
+import { Melodreams } from '@heymelodreams/sdk';
 
 const melo = new Melodreams({ token: process.env.MELODREAMS_TOKEN! });
 
@@ -49,7 +49,7 @@ Everything is read-only. The API has no write endpoints.
 ## Errors
 
 ```ts
-import { Melodreams, MelodreamsError } from '@melodreams/sdk';
+import { Melodreams, MelodreamsError } from '@heymelodreams/sdk';
 
 try {
   await melo.myAnalytics();
