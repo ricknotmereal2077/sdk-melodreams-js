@@ -17,6 +17,8 @@ export type MelodreamsErrorCode =
   | 'rate_limited'
   | 'quota_exceeded'
   | 'distinct_profile_cap'
+  | 'api_unavailable'
+  | 'scope_paused'
   | 'internal_error'
   | 'upstream_error'
   | 'network_error';
@@ -48,6 +50,8 @@ export class MelodreamsError extends Error {
       this.code === 'rate_limited' ||
       this.code === 'upstream_error' ||
       this.code === 'network_error' ||
+      this.code === 'api_unavailable' ||
+      this.code === 'scope_paused' ||
       this.status >= 500
     );
   }
@@ -58,6 +62,10 @@ export class MelodreamsError extends Error {
 
   get needsPlan(): boolean {
     return this.code === 'plan_required';
+  }
+
+  get isServicePaused(): boolean {
+    return this.code === 'api_unavailable' || this.code === 'scope_paused';
   }
 }
 

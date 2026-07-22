@@ -2,6 +2,8 @@ export type Scope = 'public:read' | 'profile:read' | 'analytics:read';
 
 export type AccessTier = 'full' | 'past_due_grace' | 'free' | 'blocked' | 'deleted';
 
+export type LinkStyle = 'big' | 'small';
+
 export interface RateLimit {
   limit: number | null;
   remaining: number | null;
@@ -9,16 +11,10 @@ export interface RateLimit {
 }
 
 export interface Link {
-  label: string | null;
+  title: string | null;
   url: string;
-  icon?: string;
-  category?: string;
-  thumbnail?: string;
-}
-
-export interface Social {
-  platform: string;
-  value: string;
+  style: LinkStyle;
+  type: string;
 }
 
 export interface Avatar {
@@ -27,6 +23,12 @@ export interface Avatar {
   border_color: string | null;
   frame: string;
   frame_color: string | null;
+}
+
+export interface Badges {
+  verified: boolean;
+  staff: boolean;
+  developer: boolean;
 }
 
 export interface ProfileFlags {
@@ -45,7 +47,7 @@ export interface Profile {
   theme: string | null;
   avatar: Avatar;
   links: Link[];
-  socials: Social[];
+  badges: Badges;
   flags: ProfileFlags;
   custom_domain: string | null;
   melo_bio_mode: string;
@@ -60,11 +62,19 @@ export interface OwnProfile extends Profile {
   };
 }
 
+export interface LinkClicks {
+  link_id: string;
+  title: string | null;
+  url: string | null;
+  style: LinkStyle | null;
+  count: number;
+}
+
 export interface Analytics {
   views: number;
   clicks: {
     total: number;
-    by_link: Array<{ label: string; count: number }>;
+    by_link: LinkClicks[];
   };
   updated_at: string | null;
 }
