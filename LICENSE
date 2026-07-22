@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 Melodreams
+Copyright (c) 2026 Melodreams (https://melodreams.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+NOTE ON SCOPE
+
+The MIT License above covers this client library and nothing else.
+
+Using the Melodreams API is governed by the Melodreams Terms of Service at
+https://melodreams.com/legal/terms-of-service and needs an active
+subscription. This license does not grant access to the API, to any
+Melodreams user data, or to the Melodreams name and logo.

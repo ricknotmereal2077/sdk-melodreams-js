@@ -64,9 +64,9 @@ export class Melodreams {
 
     if (typeof window !== 'undefined' && typeof document !== 'undefined') {
       throw new Error(
-        'Melodreams: this SDK must not run in a browser. An API token shipped to a ' +
-        'browser is a leaked token — anyone can read it from your bundle or devtools. ' +
-        'Call the API from your server and expose only what your front end needs.',
+        'Melodreams: this client must not run in a browser. A token in a browser is a ' +
+        'leaked token, because anyone can read it out of your bundle. Call the API from ' +
+        'your server and send your frontend only what it needs.',
       );
     }
 
